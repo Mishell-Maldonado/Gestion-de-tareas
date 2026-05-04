@@ -141,6 +141,7 @@ public static void limpiarPantalla() {
 
     public static void esperarEnter(Scanner sc) {
         System.out.println("\n Presione ENTER para continuar...");
+        System.out.println("cambion para hacer un push");
         sc.nextLine();
     }
 }
