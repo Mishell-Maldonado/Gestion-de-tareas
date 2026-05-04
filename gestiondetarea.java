@@ -35,3 +35,93 @@ public class gestiondetarea {
                 System.out.println("  6. Ver historial de completadas");
                 System.out.println("  7. Salir del sistema");
                 System.out.print("\n  > Seleccione una opción: ");
+                opcion = sc.nextInt();
+                sc.nextLine(); 
+
+                switch (opcion) {
+                    case 1:
+                        System.out.println("\n--- AGREGAR TAREA ---");
+                        System.out.print("Descripción: ");
+                        String nueva = sc.nextLine();
+                        if (!nueva.trim().isEmpty()) {
+                            pendientes.push(nueva); 
+                            // Operación PUSH: Agrega un nuevo elemento a la cima de la pila
+                            System.out.println(" Tarea guardada.");
+                        } else {
+                            System.out.println(" Descripción vacía.");
+                        }
+                        esperarEnter(sc);
+                        break;
+
+                    case 2:
+                        System.out.println("\n--- COMPLETAR TAREA ---");
+                        if (!pendientes.isEmpty()) {
+                            String terminada = pendientes.pop(); 
+                            completadas.offer(terminada); 
+                            System.out.println(" '" + terminada + "' movida al historial.");
+                        } else {
+                            System.out.println(" No hay pendientes.");
+                        }
+                        esperarEnter(sc);
+                        break;
+
+                    case 3:
+                        System.out.println("\n--- ELIMINAR DE PILA ---");
+                        if (!pendientes.isEmpty()) {
+                            System.out.println(" Se eliminó: " + pendientes.pop());
+                        } else {
+                            System.out.println(" Nada que eliminar.");
+                        }
+                        esperarEnter(sc);
+                        break;
+
+                    case 4:
+                        System.out.println("\n--- LISTA DE PENDIENTES ---");
+                        if (!pendientes.isEmpty()) {
+                            int total = pendientes.size();
+                            for (String t : pendientes) {
+                                System.out.println("[" + total-- + "] " + t);
+                            }
+                        } else {
+                            System.out.println(" No hay pendientes.");
+                        }
+                        esperarEnter(sc);
+                        break;
+
+                    case 5:
+                        System.out.println("\n--- PRÓXIMA TAREA   ---");
+                        if (!pendientes.isEmpty()) {
+                            System.out.println(" " + pendientes.peek()); 
+                        } else {
+                            System.out.println(" La pila está vacía.");
+                        }
+                        esperarEnter(sc);
+                        break;
+
+                    case 6:
+                        System.out.println("\n--- HISTORIAL (FIFO) ---");
+                        if (!completadas.isEmpty()) {
+                            completadas.forEach(c -> System.out.println("• " + c));
+                        } else {
+                            System.out.println(" Historial vacío.");
+                        }
+                        esperarEnter(sc);
+                        break;
+
+                    case 7:
+                        System.out.println("\n Saliendo...");
+                        break;
+
+                    default:
+                        System.out.println("\n Opción inválida.");
+                        esperarEnter(sc);
+                }
+            } catch (Exception e) {
+                System.out.println("\n Error: Ingrese un número.");
+                sc.nextLine(); 
+                esperarEnter(sc);
+            }
+        } while (opcion != 7);
+        sc.close();
+    }
+}
