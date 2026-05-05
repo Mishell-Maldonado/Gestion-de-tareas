@@ -74,7 +74,6 @@ public class gestiondetarea {
                         }
                         esperarEnter(sc);
                         break;
-
                     case 4:
                         System.out.println("\n--- LISTA DE PENDIENTES ---");
                         if (!pendientes.isEmpty()) {
@@ -87,7 +86,6 @@ public class gestiondetarea {
                         }
                         esperarEnter(sc);
                         break;
-
                     case 5:
                         System.out.println("\n--- PRÓXIMA TAREA   ---");
                         if (!pendientes.isEmpty()) {
@@ -99,9 +97,9 @@ public class gestiondetarea {
                         break;
 
                     case 6:
-                        System.out.println("\n--- HISTORIAL (FIFO) ---");
+                        System.out.println("\n--- HISTORIAL  ---");
                         if (!completadas.isEmpty()) {
-                            completadas.forEach(c -> System.out.println("• " + c));
+                            completadas.forEach(c -> System.out.println(" " + c));
                         } else {
                             System.out.println(" Historial vacío.");
                         }
